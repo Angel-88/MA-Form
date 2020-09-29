@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Form</title>
+        <style>
+         body {
+          background: #333; 
+          
+         }
+         .b1 {
+    background: rgb(224, 28, 215); 
+    color: white; 
+    font-size: 11; }
+        </style>
+         
+    </head>
+    <body>
+    <form name="search">
+        <input type="text" name="key" ></input>
+        <input type="button"  class="b1" name="print" value="Печать" />
+    </form>
+    <div id="printBlock"></div>
+    <script>
+    var keyBox = document.search.key;
+     
+    function onchange(e){
+        var printBlock = document.getElementById("printBlock");
+        var val = e.target.value;
+        printBlock.textContent = val;
+    }
+    function onblur(e){
+         
+        var text = keyBox.value.trim();
+        for(var i=0; i<text.length; i++) {
+        if(text[i]=="%" && text[i]=="!"&& text[i]=="@" && text[i]=="#"&& text[i]=="$"&& text[i]=="*"){
+           printBlock.style.backgroundColor = "red";
+        }else if (text.length>3){
+            printBlock.style.backgroundColor = "green";}
+    }
+    }
+    
+    keyBox.addEventListener("change", onchange);
+    keyBox.addEventListener("blur", onblur);
+    
+    </script>
+    </body>
+</html>
